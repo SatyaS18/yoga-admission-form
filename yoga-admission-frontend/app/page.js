@@ -14,6 +14,7 @@ export default function Home() {
   });
   const [feedback, setFeedback] = useState({ type: "", message: "" });
   const router = useRouter();
+  const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,22 +30,19 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/enroll`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...formData,
-            batch_id: {
-              "6-7AM": 1,
-              "7-8AM": 2,
-              "8-9AM": 3,
-              "5-6PM": 4,
-            }[formData.batch],
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/enroll`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          batch_id: {
+            "6-7AM": 1,
+            "7-8AM": 2,
+            "8-9AM": 3,
+            "5-6PM": 4,
+          }[formData.batch],
+        }),
+      });
 
       const result = await response.json();
       if (response.ok) {

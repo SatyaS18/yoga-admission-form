@@ -1,0 +1,45 @@
+# Node.js Dependencies (For Backend & Frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.lock
+
+# Build Output
+dist/
+build/
+.next/
+.out/
+.cache/
+.vercel/
+.netlify/
+functions/node_modules/
+
+# Editor & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Ignore Local Git Files (If Accidentally Created)
+.git/
+
+# Ignore Supabase Secrets (If Using)
+supabase/.temp/
+supabase/migrations/

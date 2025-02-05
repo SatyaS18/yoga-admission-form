@@ -24,19 +24,22 @@ export default function ChangeBatch() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/change-batch", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: formData.email,
-          batch_id: {
-            "6-7AM": 1,
-            "7-8AM": 2,
-            "8-9AM": 3,
-            "5-6PM": 4,
-          }[formData.newBatch],
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/change-batch`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: formData.email,
+            batch_id: {
+              "6-7AM": 1,
+              "7-8AM": 2,
+              "8-9AM": 3,
+              "5-6PM": 4,
+            }[formData.newBatch],
+          }),
+        }
+      );
 
       const result = await response.json();
       if (response.ok) {

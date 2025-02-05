@@ -29,19 +29,22 @@ export default function Home() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/enroll", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          batch_id: {
-            "6-7AM": 1,
-            "7-8AM": 2,
-            "8-9AM": 3,
-            "5-6PM": 4,
-          }[formData.batch],
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/enroll`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ...formData,
+            batch_id: {
+              "6-7AM": 1,
+              "7-8AM": 2,
+              "8-9AM": 3,
+              "5-6PM": 4,
+            }[formData.batch],
+          }),
+        }
+      );
 
       const result = await response.json();
       if (response.ok) {

@@ -23,8 +23,8 @@ lerna-debug.log*
 
 # Build Output
 dist/
-build/
-.next/
+# build/
+# .next/
 .out/
 .cache/
 .vercel/
